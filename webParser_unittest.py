@@ -8,7 +8,7 @@ Created on Mon Mar 30 19:36:12 2020
 import unittest
 import os.path
 from os import path
-from ecdc_covid import getresponse, parse_html, getdata
+from webParser import getresponse, parse_html, getdata
 class TestEcdcParse(unittest.TestCase): 
      
     # test if the website is reachable and there is not a 404 error page
@@ -18,7 +18,7 @@ class TestEcdcParse(unittest.TestCase):
     # testif the number of paragraph is as expected on the website
     def testFindAllByAttribute(self):
         matching = getdata('p',parse_html(getresponse('https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases')))
-        self.assertEqual(len(matching), 37)
+        self.assertGreater(len(matching), 30)
 
     # test if the file with deaths data has been created
     # test if the file with deaths data has more than row (excluding the header)        

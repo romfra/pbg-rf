@@ -5,6 +5,9 @@ Created on Sat Apr  4 16:14:52 2020
 @author: Romina
 """
 
+# retrieve covid data from the European Centre for Disease Prevention and Control
+# Code has been added in the github project: https://github.com/romfra/pbg-rf/
+
 from bs4 import BeautifulSoup
 
 import requests
@@ -80,7 +83,7 @@ def savecasesbycontinent(data, sentence_start):
     # find the position of the title positioned before the data I'm looking for
     position = data.index(sentence_start)
     
-    start = position + 1
+    start = position + 2
     continent = ''
 
     while continent != 'Other':
@@ -123,4 +126,5 @@ def main():
     
     savecasesbycontinent(rawdata,['<strong>Cases have been reported on the following continents:', ''])
 
-main()
+if __name__ == '__main__':
+    main()
